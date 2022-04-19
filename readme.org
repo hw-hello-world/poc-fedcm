@@ -1,0 +1,5 @@
+#+title: Readme
+
+- https://github.com/fedidcg/FedCM/blob/main/explorations/HOWTO.md
+- https://fedidcg.github.io/FedCM/
+- https://developer.mozilla.org/en-US/docs/Web/API/Credential_Management_API
