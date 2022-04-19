@@ -11,24 +11,27 @@ document.getElementById('fedcm-status').innerText = isFedCMEnabled();
 
 async function login() {
   try {
-    if (!isFedCMEnabled()) {
-      return;
-    }
+    // if (!isFedCMEnabled()) {
+    //   return;
+    // }
 
-    // In this example, https://idp.example is the IdP's URL.
-    var idToken = await navigator.credentials.get({
+    var fedCred = await navigator.credentials.get({
       federated: {
-        providers: [{
-          url: "https://example.com", // IdP domain
-          clientId: "1234", // Client ID of the RP
-          nonce: "5678", // Nonce (random value)
-        }]
+        providers: [
+          {
+            url: "https://localhost:3000", // IdP domain
+            clientId: "1234", // Client ID of the RP
+            nonce: "5678", // Nonce (random value)
+          }
+        ]
       }
     });
 
-    console.log(`received token: `, idToken);
+    console.log(`Fed Cred Manager: `, fedCred);
+    const resp = await fedCred.login()
+    console.log('FedCM login resp: ', resp);
   } catch (e) {
-    console.log(`rejected with ${e}`);
+    console.log(`rejected with: `, e);
   }
 };
 
