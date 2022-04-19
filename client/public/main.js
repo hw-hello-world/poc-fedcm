@@ -4,9 +4,10 @@
 function isFedCMEnabled() {
   return !(!window.FederatedCredential || !FederatedCredential.prototype.login);
 }
-console.log(isFedCMEnabled() ? "FedCM is available" : "FedCM is not available");
 
 document.getElementById('fedcm-status').innerText = isFedCMEnabled();
+
+
 
 async function login() {
   try {
@@ -18,7 +19,7 @@ async function login() {
     var idToken = await navigator.credentials.get({
       federated: {
         providers: [{
-          url: "https://idp.example", // IdP domain
+          url: "https://example.com", // IdP domain
           clientId: "1234", // Client ID of the RP
           nonce: "5678", // Nonce (random value)
         }]
